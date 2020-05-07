@@ -1,2 +1,14 @@
-<h1>Landing#index</h1>
-<p>Find me in app/views/landing/index.html.erb</p>
+<h1>Bienvenid-!</h1><b>
+
+    <body>
+        <%if !user_signed_in?%>
+        <div>
+            <%= button_to  "Ingresar", new_user_session_path, method: :get, class: 'btn btn-primary' %>
+        </div><br />
+        <div>
+            <%= button_to  "Registrar", new_user_registration_path, method: :get , class: 'btn btn-secondary'%>
+        </div>
+        <%else%>
+        <%= button_to  "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+        <%end%>
+    </body>
