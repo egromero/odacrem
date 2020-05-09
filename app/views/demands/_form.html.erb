@@ -1,0 +1,48 @@
+<div class="card">
+<div class="card-header">
+  <h3>Nueva solicitud</h3>
+</div>
+<div class="card-body">
+<%= form_with(model: demand, local: true) do |form| %>
+  <% if demand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(demand.errors.count, "error") %> prohibited this demand from being saved:</h2>
+      <ul>
+        <% demand.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Producto %>
+    <%= form.text_field :product, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :Cantidad %>
+    <%= form.text_field :amount, class: "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Descripcion %>
+    <%= form.text_field:description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria %>
+    <%= form.select :category, options_for_select([['categoria1', 'categoria1'], ['categoria2', 'categoria2'], ['categoria3', 'categoria3']]) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_field :date, min: Date.today %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear", class: "btn btn-outline-dark"%>
+  </div>
+<% end %>
+</div>
+</div>
