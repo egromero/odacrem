@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_042350) do
+ActiveRecord::Schema.define(version: 2020_05_13_044336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_05_13_042350) do
     t.decimal "supplied_amount"
     t.decimal "promised_amount"
     t.text "description"
+    t.bigint "demander_id"
+    t.index ["demander_id"], name: "index_demands_on_demander_id"
     t.index ["product_id"], name: "index_demands_on_product_id"
   end
 
@@ -66,4 +68,5 @@ ActiveRecord::Schema.define(version: 2020_05_13_042350) do
   add_foreign_key "allocations", "demands"
   add_foreign_key "allocations", "users"
   add_foreign_key "demands", "products"
+  add_foreign_key "demands", "users", column: "demander_id"
 end
