@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :belongs_to %>
-    <%= form.text_field :belongs_to %>
+    <%= form.label :demand_id %>
+    <%= form.text_field :demand_id %>
   </div>
 
   <div class="field">
-    <%= form.label :belongs_to %>
-    <%= form.text_field :belongs_to %>
+    <%= form.label :user_id%>
+    <%= form.number_field :user_id %>
   </div>
 
   <div class="field">
@@ -27,8 +27,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :promised_at %>
-    <%= form.datetime_select :promised_at %>
+    <%= form.label :fecha %>
+    <%= form.date_field :promised_at, min: Date.today %>
   </div>
 
   <div class="field">

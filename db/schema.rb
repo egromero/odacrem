@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_044336) do
+ActiveRecord::Schema.define(version: 2020_05_13_053818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2020_05_13_044336) do
     t.bigint "user_id"
     t.bigint "demand_id"
     t.decimal "amount"
-    t.datetime "promised_at"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "promised_at"
     t.index ["demand_id"], name: "index_allocations_on_demand_id"
     t.index ["user_id"], name: "index_allocations_on_user_id"
   end
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2020_05_13_044336) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "product_id"
-    t.datetime "expiry_at"
     t.decimal "requested_amount"
     t.decimal "supplied_amount"
     t.decimal "promised_amount"
     t.text "description"
     t.bigint "demander_id"
+    t.datetime "expiry_at"
     t.index ["demander_id"], name: "index_demands_on_demander_id"
     t.index ["product_id"], name: "index_demands_on_product_id"
   end
