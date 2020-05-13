@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  belongs_to: 
+  belongs_to: 
+  amount: 9.99
+  promised_at: 2020-05-13 00:02:47
+  status: 1
+
+two:
+  belongs_to: 
+  belongs_to: 
+  amount: 9.99
+  promised_at: 2020-05-13 00:02:47
+  status: 1

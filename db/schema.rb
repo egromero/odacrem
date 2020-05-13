@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_022349) do
+ActiveRecord::Schema.define(version: 2020_05_13_042350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "allocations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "demand_id"
+    t.decimal "amount"
+    t.datetime "promised_at"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["demand_id"], name: "index_allocations_on_demand_id"
+    t.index ["user_id"], name: "index_allocations_on_user_id"
+  end
 
   create_table "demands", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -51,5 +63,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_022349) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "allocations", "demands"
+  add_foreign_key "allocations", "users"
   add_foreign_key "demands", "products"
 end

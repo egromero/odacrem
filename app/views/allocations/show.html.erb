@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Belongs to:</strong>
+  <%= @allocation.belongs_to %>
+</p>
+
+<p>
+  <strong>Belongs to:</strong>
+  <%= @allocation.belongs_to %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @allocation.amount %>
+</p>
+
+<p>
+  <strong>Promised at:</strong>
+  <%= @allocation.promised_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @allocation.status %>
+</p>
+
+<%= link_to 'Edit', edit_allocation_path(@allocation) %> |
+<%= link_to 'Back', allocations_path %>

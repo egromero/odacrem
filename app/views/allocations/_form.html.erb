@@ -1,0 +1,42 @@
+<%= form_with(model: allocation, local: true) do |form| %>
+  <% if allocation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(allocation.errors.count, "error") %> prohibited this allocation from being saved:</h2>
+
+      <ul>
+        <% allocation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :belongs_to %>
+    <%= form.text_field :belongs_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :belongs_to %>
+    <%= form.text_field :belongs_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :promised_at %>
+    <%= form.datetime_select :promised_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

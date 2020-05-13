@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :allocations
   resources :products
   resources :demands
   devise_for :users,  controllers: {
