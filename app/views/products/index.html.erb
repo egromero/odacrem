@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name </th>
       <th>Model url</th>
       <th>Certification url</th>
       <th>Description</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td><%= product.name %></td>
         <td><%= product.model_url %></td>
         <td><%= product.certification_url %></td>
         <td><%= product.description %></td>

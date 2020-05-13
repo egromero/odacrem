@@ -16,13 +16,13 @@
   <% end %>
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.number_field :product_id, class: "form-control"%>
+    <%= form.collection_select :product_id, Product.all, :id, :name %>
   </div>
 
 
   <div class="field">
     <%= form.label :demander_id %>
-    <%= form.number_field :demander_id %>
+    <%= form.collection_select :demander_id, User.all, :id, :email %>
   </div>
 
 
@@ -30,8 +30,8 @@
     <%= form.label :Cantidad %>
     <%= form.text_field :requested_amount, class: "form-control" %>
   </div>
-  <input type="hidden" name="supplied_amount" value=0>
-  <input type="hidden" name="promised_amount" value=0>
+  <input type="hidden" name="supplied_amount" value="0">
+  <input type="hidden" name="promised_amount" value="0">
 
   <div class="field">
     <%= form.label :Descripcion %>

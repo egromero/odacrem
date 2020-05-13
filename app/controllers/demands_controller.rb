@@ -70,6 +70,7 @@ class DemandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def demand_params
-      params.require(:demand).permit(:product, :amount)
+      params.require(:demand).permit(:product_id, :requested_amount,
+        :supplied_amount, :promised_amount, :description, :expiry_at, :demander_id)
     end
 end

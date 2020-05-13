@@ -69,6 +69,6 @@ class AllocationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def allocation_params
-      params.require(:allocation).permit(:belongs_to, :belongs_to, :amount, :promised_at, :status)
+      params.require(:allocation).permit(:belongs_to, :belongs_to, :amount, :promised_at, :status, :user_id, :demand_id)
     end
 end

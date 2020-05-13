@@ -1,13 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Product:</strong>
-  <%= @demand.product %>
+  <strong>Description:</strong>
+  <%= @demand.description %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
-  <%= @demand.amount %>
+  <strong>Product Id:</strong>
+  <%= @demand.product_id %>
+</p>
+
+<p>
+  <strong>Demander Id:</strong>
+  <%= @demand.demander_id %>
+</p>
+
+<p>
+  <strong>Requested Amount:</strong>
+  <%= @demand.requested_amount %>
+</p>
+
+<p>
+  <strong>Supplied Amount:</strong>
+  <%= @demand.supplied_amount %>
+</p>
+
+<p>
+  <strong>Promised Amount:</strong>
+  <%= @demand.promised_amount %>
 </p>
 
 <%= link_to 'Edit', edit_demand_path(@demand) %> |
