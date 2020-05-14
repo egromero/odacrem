@@ -1,47 +1,58 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="page-wrapper">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading-hospital"></div>
+      <div class="card-body">
+        <h2 class="title-form">Nuevo producto</h2>
+        <%= form_with(model: product, local: true) do |form| %>
+          <% if product.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+            <ul>
+              <% product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <div class="field input-group">
+            <%= form.label :name, "Nombre" %>
+            <%= form.text_field :name %>
+          </div>
 
-      <ul>
-        <% product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+          <div class="field input-group">
+            <%= form.label :model_url, 'URL Modelo' %>
+            <%= form.text_field :model_url , size: '8x4' %>
+          </div>
+
+          <div class="field input-group">
+            <%= form.label :certification_url, 'URL Certificacion' %>
+            <%= form.text_field :certification_url %>
+          </div>
+
+          <div class="field input-group">
+            <%= form.label :description, 'Descripcion' %>
+            <%= form.text_field :certification_url %>
+          </div>
+
+          <div class="field input-group">
+            <%= form.label :specifications, 'Especificaciones' %>
+            <%= form.text_field :certification_url %>
+          </div>
+          <div class ="field">
+            <%= form.label "Agregar Imagen"%>
+            <%= form.file_field :image %>
+          </div>      
+
+          <div class="actions">
+            <%= form.submit "Enviar", class: "btn btn--radius btn--green" %>
+          </div>
+          <% end %>
+          <div class="actions">
+            <%= link_to 'Cancelar', demands_path, class: "btn btn--radius btn--red btn--large btn--text-black" %>
+          </div>
+        </div>      
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :model_url %>
-    <%= form.text_field :model_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :certification_url %>
-    <%= form.text_field :certification_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :specifications %>
-    <%= form.text_area :specifications %>
-  </div>
-  
-  <div class ="field">
-    <%= form.label "Agregar Imagen"%>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
