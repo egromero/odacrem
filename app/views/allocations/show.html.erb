@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Demand Id:</strong>
+  <%= @allocation.demand_id %>
+</p>
+
+<p>
+  <strong>User Id:</strong>
+  <%= @allocation.user_id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @allocation.amount %>
+</p>
+
+<p>
+  <strong>Promised at:</strong>
+  <%= @allocation.promised_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @allocation.status %>
+</p>
+
+<%= link_to 'Edit', edit_allocation_path(@allocation) %> |
+<%= link_to 'Back', allocations_path %>

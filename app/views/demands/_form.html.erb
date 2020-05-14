@@ -14,30 +14,33 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.collection_select :product_id, Product.all, :id, :name %>
+  </div>
+
 
   <div class="field">
-    <%= form.label :Producto %>
-    <%= form.text_field :product, class: "form-control"%>
+    <%= form.label :demander_id %>
+    <%= form.collection_select :demander_id, User.all, :id, :email %>
   </div>
+
 
   <div class="field">
     <%= form.label :Cantidad %>
-    <%= form.text_field :amount, class: "form-control" %>
+    <%= form.text_field :requested_amount, class: "form-control" %>
   </div>
-  
+  <input type="hidden" name="supplied_amount" value="0">
+  <input type="hidden" name="promised_amount" value="0">
+
   <div class="field">
     <%= form.label :Descripcion %>
     <%= form.text_field:description, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :categoria %>
-    <%= form.select :category, options_for_select([['categoria1', 'categoria1'], ['categoria2', 'categoria2'], ['categoria3', 'categoria3']]) %>
-  </div>
-
-  <div class="field">
     <%= form.label :fecha %>
-    <%= form.date_field :date, min: Date.today %>
+    <%= form.date_field :expiry_at, min: Date.today %>
   </div>
 
   <div class="actions">
