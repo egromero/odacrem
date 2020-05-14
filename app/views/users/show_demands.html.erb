@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Demands</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>product_id</td>
+      <td>demander_id</td>
+      <td>description</td>
+      <td>requested_amount</td>
+      <td>supplied_amount</td>
+      <td>promised_amount</td>
+      <td>expiry_at</td>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @demands.each do |demand| %>
+      <tr>
+        <td><%= demand.product_id %></td>
+        <td><%= demand.demander_id %></td>
+        <td><%= demand.description %></td>
+        <td><%= demand.requested_amount %></td>
+        <td><%= demand.supplied_amount %></td>
+        <td><%= demand.promised_amount %></td>
+        <td><%= demand.expiry_at %></td>
+        <td><%= link_to 'Show', demand %></td>
+        <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
+        <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Demand', new_demand_path %>

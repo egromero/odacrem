@@ -18,6 +18,7 @@ class DemandsController < ApplicationController
     @demand = Demand.new
   end
 
+
   # GET /demands/1/edit
   def edit
   end
