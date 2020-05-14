@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "tables", media: "all", "data-turbolinks-track" => "reload" %>
 <p id="notice"><%= notice %></p>
 
 <h1>User Demands</h1>
@@ -5,13 +6,13 @@
 <table>
   <thead>
     <tr>
-      <td>product_id</td>
-      <td>demander_id</td>
-      <td>description</td>
-      <td>requested_amount</td>
-      <td>supplied_amount</td>
-      <td>promised_amount</td>
-      <td>expiry_at</td>
+      <td>Product ID</td>
+      <td>Requester ID</td>
+      <td>Description</td>
+      <td>Requested Amount</td>
+      <td>Supplied Amount</td>
+      <td>Promised Amount</td>
+      <td>Expiry Date</td>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,8 +28,6 @@
         <td><%= demand.promised_amount %></td>
         <td><%= demand.expiry_at %></td>
         <td><%= link_to 'Show', demand %></td>
-        <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
-        <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
