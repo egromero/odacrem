@@ -5,6 +5,7 @@ class AllocationsController < ApplicationController
   # GET /allocations.json
   def index
     @allocations = Allocation.all
+    @demands = Demand.all
   end
 
   # GET /allocations/1

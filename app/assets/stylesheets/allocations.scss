@@ -1,3 +1,130 @@
 // Place all the styles related to the Allocations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.demands-main-title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.demand-container {
+  margin-top: 3%;
+}
+
+.demand-text {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.demand-title {
+  font-size: 15px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.demand-description {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.demand-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.demand-image {
+  width: 100%;
+}
+
+.stars {
+  display: inline-block;
+  margin-left: 3%;
+}
+
+.checked {
+  color: orange;
+}
+
+.delete-button {
+  align-self: flex-end;
+  display: inline-block;
+
+  a {
+    color: #666;
+  }
+}
+
+.new-demand {
+  float: right;
+  margin-right: 3%;
+}
+
+.container-landpage {
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.demands-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.demand-datum-container {
+  font-size: 10px;
+}
+
+.demand-datum-label {
+  font-weight: bold;
+}
+
+.demand-datum-value {
+  margin-left: 5px;
+}
+
+.owner-buttons {
+  float: right;
+}
+
+.btn.view-more-demand-btn {
+  background-color: #7ed8d0;
+  color: white;
+  line-height: 30px;
+}
+
+.view-more-demand-btn:hover {
+  background-color: white;
+  color: #7ed8d0;
+  border: 1px solid #7ed8d0;
+}
+
+.owner-button {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.demand-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}

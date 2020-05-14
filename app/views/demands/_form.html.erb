@@ -1,51 +1,50 @@
-<div class="card">
-<div class="card-header">
-  <h3>Nueva solicitud</h3>
-</div>
-<div class="card-body">
-<%= form_with(model: demand, local: true) do |form| %>
-  <% if demand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(demand.errors.count, "error") %> prohibited this demand from being saved:</h2>
-      <ul>
-        <% demand.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="page-wrapper">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading-hospital"></div>
+      <div class="card-body">
+        <h2 class="title-form">Nueva solicitud</h2>
+        <%= form_with(model: demand, local: true) do |form| %>
+          <% if demand.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(demand.errors.count, "error") %> prohibited this demand from being saved:</h2>
+            <ul>
+              <% demand.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <div class="field input-group">
+            <%= form.label :product_id, "Producto" %>
+            <%= form.collection_select :product_id, Product.all, :id, :name, html_options: { class: "input--style-2" } %>
+          </div>
+          <div class="missing-products-container">
+            <span>¿Faltan productos? <u><%= link_to 'Haz click aquí', new_product_url, class: "missing-products-link" %></u></span>
+          </div>
+          <div class="field input-group">
+            <%= form.label :requested_amount, "Cantidad" %>
+            <%= form.number_field :requested_amount, class: "input--style-2", value: 0 %>
+          </div>
+
+          <div class="field input-group">
+            <%= form.label :description, 'Descripción' %>
+            <%= form.text_area :description, class: "input--style-2", size: '8x4' %>
+          </div>
+
+          <div class="field input-group">
+            <%= form.label :expiry_at, '¿Para cuándo las necesitas como máximo?' %>
+            <%= form.date_field :expiry_at, min: Date.today, :value => Date.today, class: "input--style-2" %>
+          </div>
+          <div class="actions">
+            <%= form.submit "Enviar", class: "btn btn--radius btn--green" %>
+          </div>
+          <% end %>
+          <div class="actions">
+            <%= link_to 'Cancelar', demands_path, class: "btn btn--radius btn--red btn--large btn--text-black" %>
+          </div>
+        </div>      
+      </div>
     </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.collection_select :product_id, Product.all, :id, :name %>
   </div>
-
-
-  <div class="field">
-    <%= form.label :demander_id %>
-    <%= form.collection_select :demander_id, User.all, :id, :email %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :Cantidad %>
-    <%= form.text_field :requested_amount, class: "form-control" %>
-  </div>
-  <input type="hidden" name="supplied_amount" value="0">
-  <input type="hidden" name="promised_amount" value="0">
-
-  <div class="field">
-    <%= form.label :Descripcion %>
-    <%= form.text_field:description, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fecha %>
-    <%= form.date_field :expiry_at, min: Date.today %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Crear", class: "btn btn-outline-dark"%>
-  </div>
-<% end %>
-</div>
 </div>
