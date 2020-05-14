@@ -14,3 +14,13 @@
  *= require_tree .
  *= require_self
  */
+
+@import "font-awesome.css";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.page-wrapper {
+  padding: 0 50px;
+}
+
+footer {}

@@ -1,10 +1,9 @@
 <% if user_signed_in? %>
-    <% if @user.type_of_user == "Hospital" %>
-        <%= render 'form', demand: @demand %>
-        <%= link_to 'Back', demands_path %>
-    <% else %>
-        <h2>Tu usuario no es hospital, debes iniciar sesion como hospital para ingresar solicitudes</h2>
-    <% end %>
+<% if @user.type_of_user == "Hospital" %>
+<%= render 'form', demand: @demand %>
 <% else %>
-    <h2>No has iniciado sesion, debes iniciar sesion para ingresar solicitudes</h2>
+<h2>Tu usuario no es hospital, debes iniciar sesion como hospital para ingresar solicitudes</h2>
+<% end %>
+<% else %>
+<h2>No has iniciado sesion, debes iniciar sesion para ingresar solicitudes</h2>
 <% end %>

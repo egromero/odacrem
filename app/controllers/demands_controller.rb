@@ -18,6 +18,7 @@ class DemandsController < ApplicationController
     @demand = Demand.new
   end
 
+
   # GET /demands/1/edit
   def edit
   end
@@ -70,7 +71,7 @@ class DemandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def demand_params
-      params.require(:demand).permit(:product_id, :requested_amount,
-        :supplied_amount, :promised_amount, :description, :expiry_at, :demander_id)
+      params.require(:demand).permit(:product_id, :requested_amount, 
+        :description, :expiry_at).merge(demander_id: current_user.id)
     end
 end

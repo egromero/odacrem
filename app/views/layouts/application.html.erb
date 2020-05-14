@@ -8,9 +8,75 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
+    <div class="MobileNav" data-mobile-nav>
+  <div class="MobileNav-overlay" data-mobile-nav-overlay></div>
+  <div class="MobileNav-inner">
+    <div class="MobileNav-trigger" data-mobile-nav-trigger>
+      <div class="MobileNav-trigger-inner"></div>
+    </div>
+    <ul class="MobileNav-nav" data-mobile-nav-list>
+      <li class="MobileNav-item" data-mobile-nav-item="1">
+        <div class="MobileNav-item-title">
+          <a href="#">Acerca</a>
+        </div>
+      </li>
+      <li class="MobileNav-item" data-mobile-nav-item="2">
+        <div class="MobileNav-item-title">
+          <%= link_to "Aportar", allocations_path%>
+        </div>
+      </li>
+      <li class="MobileNav-item" data-mobile-nav-item="3">
+        <div class="MobileNav-item-title">
+          <%= link_to "Solicitar aporte", demands_path%>
+        </div>
+      </li>
+      <li class="MobileNav-item" data-mobile-nav-item="4">
+        <div class="MobileNav-item-title">
+          <%= link_to "Insumos", products_path%>
+        </div>
+      </li>
+      <li class="MobileNav-item" data-mobile-nav-item="5">
+        <div class="MobileNav-item-title">
+          <a href="#">Mis datos</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<header class="Header" data-header>
+  <div class="Header-inner" data-header-nav>
+    <div class="logo">
+      <%= image_tag "logo/logo.jpeg"%>
+    </div>
+    <nav class="Header-nav" data-nav>
+      <div class="Header-nav-item" data-nav-item="1">
+        <a href="#">Acerca</a>
+      </div>
+      <div class="Header-nav-item" data-nav-item="2">
+        <%= link_to "Aportar", allocations_path%>
+      </div>
+      <div class="Header-nav-item" data-nav-item="3">
+        <%= link_to "Solicitar aporte", demands_path%>
+      </div>
+      <div class="Header-nav-item" data-nav-item="4">
+        <%= link_to "Insumos", products_path%>
+      </div>
+      <div class="Header-nav-item" data-nav-item="5">
+        <a href="#">Mis datos</a>
+      </div>
+    </nav>
+    <button class="MobileNav-trigger" data-mobile-nav-trigger>
+      <div class="MobileNav-trigger-inner"></div>
+    </button>
+  </div>
+</header>
     <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
         <a href="#" data-dismiss="alert" class="close">×</a>
@@ -21,7 +87,12 @@
         </ul>
     </div>
     <% end %>
-    <%= yield %>
+    <div class="page-wrapper">
+        <%= yield %>
+    </div>
+    <footer>
+        <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a>
+    </footer>
 </body>
 
 </html>

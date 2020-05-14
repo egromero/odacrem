@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Demands</h1>
+<h1>Solicitudes</h1>
 
+<%
+=begin%>
 <table>
   <thead>
     <tr>
@@ -18,22 +20,28 @@
 
   <tbody>
     <% @demands.each do |demand| %>
-      <tr>
-        <td><%= demand.product_id %></td>
-        <td><%= demand.demander_id %></td>
-        <td><%= demand.description %></td>
-        <td><%= demand.requested_amount %></td>
-        <td><%= demand.supplied_amount %></td>
-        <td><%= demand.promised_amount %></td>
-        <td><%= demand.expiry_at %></td>
-        <td><%= link_to 'Show', demand %></td>
-        <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
-        <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= demand.product_id %></td>
+      <td><%= demand.demander_id %></td>
+      <td><%= demand.description %></td>
+      <td><%= demand.requested_amount %></td>
+      <td><%= demand.supplied_amount %></td>
+      <td><%= demand.promised_amount %></td>
+      <td><%= demand.expiry_at %></td>
+      <td><%= link_to 'Show', demand %></td>
+      <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
+      <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
+<%
+=end%>
 
-<br>
+<p>
+  En esta sección puedes revisar el estado de tus solicitudes e ingresar nuevas, si lo deseas.
+</p>
 
-<%= link_to 'New Demand', new_demand_path %>
+<h2>Mis solicitudes</h2>
+
+<%= link_to 'Ingresar nueva solicitud', new_demand_path %>
