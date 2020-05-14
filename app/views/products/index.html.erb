@@ -8,7 +8,7 @@
       <%= link_to product do %>
         <div class="product-container">
           <div class="product-image-container">
-            <%= image_tag product.image%>
+            <%= image_tag (url_for(product.image))%>
           </div>
           <div class="product-data-container">
             <div class="product-data-name"><%= product.name %></div>
