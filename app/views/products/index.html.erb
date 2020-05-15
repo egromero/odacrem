@@ -2,7 +2,9 @@
 
 <div class="page-wraper">
   <h2>Insumos</h2>
+  <% if current_user.type_of_user == "Hospital" %>
   <p>Estos son los insumos o productos que puedes solicitar como aporte, actualmente.</p>
+  <% end %>
   <div class="products-container">
     <% @products.each do |product| %>
       <%= link_to product do %>
