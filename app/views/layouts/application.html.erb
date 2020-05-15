@@ -68,12 +68,14 @@
         <a href="#">Acerca</a>
       </div>
       <%if user_signed_in?%>
-      <div class="Header-nav-item" data-nav-item="2">
-        <%= link_to "Aportar", allocations_path%>
-      </div>
-      <div class="Header-nav-item" data-nav-item="3">
-        <%= link_to "Solicitar aporte", demands_path%>
-      </div>
+        <div class="Header-nav-item" data-nav-item="2">
+          <%= link_to "Aportar", allocations_path%>
+        </div>
+      <% if current_user.type_of_user == "Hospital" %>
+        <div class="Header-nav-item" data-nav-item="3">
+          <%= link_to "Solicitar aporte", demands_path%>
+        </div>
+      <% end %>
       <div class="Header-nav-item" data-nav-item="4">
         <%= link_to "Insumos", products_path%>
       </div>
