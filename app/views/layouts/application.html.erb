@@ -43,7 +43,7 @@
       </li>
       <li class="MobileNav-item" data-mobile-nav-item="5">
         <div class="MobileNav-item-title">
-          <a href="#">Mis datos</a>
+        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
         </div>
       <li class="MobileNav-item" data-mobile-nav-item="4">
         <div class="MobileNav-item-title">
@@ -78,7 +78,7 @@
         <%= link_to "Insumos", products_path%>
       </div>
       <div class="Header-nav-item" data-nav-item="5">
-        <a href="#">Mis datos</a>
+       <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
       </div>
     </nav>
     <%else%>
