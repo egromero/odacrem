@@ -1,13 +1,6 @@
 <body>
     <div style="max-width: 500px; margin: auto">
-        <h1>ODACREM</h1><br />
-        <%if !user_signed_in?%> <div>
-            <%= button_to  "Ingresar", new_user_session_path, method: :get, class: 'btn btn-primary' %>
-        </div><br />
-        <div>
-            <%= button_to  "Registrar", new_user_registration_path, method: :get , class: 'btn btn-secondary'%>
-        </div>
-        <%else%>
+        <%if user_signed_in?%> <div>
         <h2>Bienvenid-! <%=@user.first_name%></h2><br />
         <%= button_to  "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
         <%end%>
