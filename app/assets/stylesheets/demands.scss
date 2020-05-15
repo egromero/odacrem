@@ -2,10 +2,110 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+body {
+  padding-top: 20px;
+}
+
+.landpage-container{
+  padding-top: 1px;
+  margin-left: 40px;
+  align-items: center;
+}
+
 .missing-products-container {
   margin-bottom: 10px;
 }
 
 .missing-products-link:hover {
   background-color: pink;
+}
+
+.column-1 {
+  float: left;
+  width: 40%;
+  margin: 20px;
+}
+
+.column-2 {
+  float: left;
+  width: 60%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row-demands{
+  display:flex;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.img-demand{
+  width:100%;
+}
+
+.title-demand{
+  padding: 5px;
+  margin: 10px;
+  text-align: center;
+}
+
+.product-container-demand{
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.container-demand{
+  padding: 20px;
+  margin: 20px;
+  text-align: justify ;
+
+}
+
+.name-product{
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.row-demand-info{
+  display:flex;
+  margin-left: 50px;
+  margin-right: 50px;
+  justify-content: space-evenly;
+}
+
+.box-item {
+  float: left;
+  text-align: center;
+  align-items: center;
+  
+}
+
+.value{
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 600;}
+
+.description{
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
+
+.date-button{
+  width: 100%;
+  margin-top: 40px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
 }

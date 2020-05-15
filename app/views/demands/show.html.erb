@@ -1,34 +1,55 @@
-<p id="notice"><%= notice %></p>
+<body>
+<div class="row-demands">
+  <div class="column-1">
+    <img class="img-demand" src="<%= url_for(@products.find(@demand.product_id).image) %>"/>
+  </div>
+  <div class="column-2">
+    <h1 class="title-demand"><%= @users.find(@demand.demander_id).last_name %>,<%= @users.find(@demand.demander_id).first_name %></h1>
+    <div class="product-container-demand">
+      <p class="name-product"> <%= @products.find(@demand.product_id).name %></p>
+      <p> <b>Modelo: </b><a href="<%=@products.find(@demand.product_id).model_url%>"><%=@products.find(@demand.product_id).model_url%></a></p>
+      <p> <b>Certificación: </b><a href="<%=@products.find(@demand.product_id).certification_url%>"><%=@products.find(@demand.product_id).certification_url%></a></p>
+      <p> <b>Descripción: </b> <%= @products.find(@demand.product_id).description %></p>
+      <p> <b>Especificaciones: </b> <%= @products.find(@demand.product_id).specifications %></p>
+    </div>
+  </div>
+</div>
+<div class="container-demand">
+  <p> <b>Solicitud: </b> <%= @demand.description %></p>
+</div>
+<div class="row-demand-info">
+  <div class="box-item">
+    <p class="value"><%= @demand.requested_amount %></p>
+    <p class="description">Cantidad solicitada</p>
+  </div>
+  <div class="box-item">
+    <p class="value"><%= @demand.supplied_amount  %></p>
+    <p class="description">Cantidad recibida</p>
+  </div>
+  <div class="box-item">
+    <p class="value"><%=  @demand.promised_amount %></p>
+    <p class="description">Cantidad comprometida</p>
+  </div>
+</div>
+<div class="date-button">
+  <%= link_to 'Aportar', new_allocation_url(id: @demand.id) , class: "btn btn-primary" %>
+  <p class="description"><b>Fecha límite: </b> <%= @demand.expiry_at %> </p>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @demand.description %>
-</p>
+ 
 
-<p>
-  <strong>Product Id:</strong>
-  <%= @demand.product_id %>
-</p>
 
-<p>
-  <strong>Demander Id:</strong>
-  <%= @demand.demander_id %>
-</p>
 
-<p>
-  <strong>Requested Amount:</strong>
-  <%= @demand.requested_amount %>
-</p>
 
-<p>
-  <strong>Supplied Amount:</strong>
-  <%= @demand.supplied_amount %>
-</p>
 
-<p>
-  <strong>Promised Amount:</strong>
-  <%= @demand.promised_amount %>
-</p>
+
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_demand_path(@demand) %> |
 <%= link_to 'Back', demands_path %>

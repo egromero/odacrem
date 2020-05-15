@@ -10,6 +10,8 @@ class DemandsController < ApplicationController
   # GET /demands/1
   # GET /demands/1.json
   def show
+    @users = User.all
+    @products = Product.all
   end
 
   # GET /demands/new
@@ -72,6 +74,6 @@ class DemandsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def demand_params
       params.require(:demand).permit(:product_id, :requested_amount, 
-        :description, :expiry_at).merge(demander_id: current_user.id)
+        :description, :expiry_at).merge(demander_id: current_user.id, supplied_amount: 0, promised_amount:0 )
     end
 end

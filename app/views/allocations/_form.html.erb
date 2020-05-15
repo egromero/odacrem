@@ -1,42 +1,54 @@
-<%= form_with(model: allocation, local: true) do |form| %>
-  <% if allocation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(allocation.errors.count, "error") %> prohibited this allocation from being saved:</h2>
+<div class="page-wrapper">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading-hospital"></div>
+      <div class="card-body">
+        <h2 class="title-form">Nuevo aporte</h2>
+        <%= form_with(model: allocation, local: true) do |form| %>
+          <% if allocation.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(allocation.errors.count, "error") %> prohibited this allocation from being saved:</h2>
+            <ul>
+              <% allocation.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <div class="field input-group">
+            <%= form.label :amount, "Cantidad a aportar" %>
+            <%= form.number_field :amount, class: "input--style-2", value: 0 %>
+          </div>
 
-      <ul>
-        <% allocation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+          <div class="field input-group">
+            <%= form.label :promised_at, '¿Cuándo lo puedes entregar?' %>
+            <%= form.date_field :promised_at, min: Date.today, :value => Date.today, class: "input--style-2" %>
+          </div>
+          <%= form.hidden_field :demand_id, :value => @demand_id %>
+          <div class="actions">
+            <%= form.submit "Enviar", class: "btn btn--radius btn--green" %>
+          </div>
+          <% end %>
+          <div class="actions">
+            <%= link_to 'Cancelar', demands_path, class: "btn btn--radius btn--red btn--large btn--text-black" %>
+          </div>
+        </div>      
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :demand_id %>
-    <%= form.collection_select :demand_id, Demand.all, :id, :id %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :user_id%>
-    <%= form.collection_select :user_id, User.all, :id, :email %>
-  </div>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
 
-  <div class="field">
-    <%= form.label :fecha %>
-    <%= form.date_field :promised_at, min: Date.today %>
-  </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+
+
+
+
+
+
+
+
+
+

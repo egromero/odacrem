@@ -11,11 +11,13 @@ class AllocationsController < ApplicationController
   # GET /allocations/1
   # GET /allocations/1.json
   def show
+    @demands = Demand.all
   end
 
   # GET /allocations/new
   def new
     @allocation = Allocation.new
+    @demand_id = params[:id]
   end
 
   # GET /allocations/1/edit
@@ -26,9 +28,12 @@ class AllocationsController < ApplicationController
   # POST /allocations.json
   def create
     @allocation = Allocation.new(allocation_params)
-
+    @demands = Demand.all
+    @pa = @demands.find(@allocation.demand_id)
     respond_to do |format|
       if @allocation.save
+        @pa.promised_amount += @allocation.amount
+        @pa.save
         format.html { redirect_to @allocation, notice: 'Allocation was successfully created.' }
         format.json { render :show, status: :created, location: @allocation }
       else
@@ -70,6 +75,7 @@ class AllocationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def allocation_params
-      params.require(:allocation).permit(:belongs_to, :belongs_to, :amount, :promised_at, :status, :user_id, :demand_id)
+      params.require(:allocation).permit(:amount, :promised_at, :demand_id).merge(
+         user_id: current_user.id)
     end
 end
