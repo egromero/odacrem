@@ -18,6 +18,8 @@ class AllocationsController < ApplicationController
   def new
     @allocation = Allocation.new
     @demand_id = params[:id]
+    @demand = Demand.find(@demand_id)
+
   end
 
   # GET /allocations/1/edit
@@ -34,7 +36,7 @@ class AllocationsController < ApplicationController
       if @allocation.save
         @pa.promised_amount += @allocation.amount
         @pa.save
-        format.html { redirect_to @allocation, notice: 'Allocation was successfully created.' }
+        format.html { redirect_to @pa, notice: 'Allocation was successfully created.' }
         format.json { render :show, status: :created, location: @allocation }
       else
         format.html { render :new }
