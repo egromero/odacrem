@@ -17,12 +17,12 @@
           <% end %>
           <div class="field input-group">
             <%= form.label :amount, "Cantidad a aportar" %>
-            <%= form.number_field :amount, class: "input--style-2", value: 0 %>
+            <%= form.number_field :amount, class: "input--style-2", value: 0, max: @demand.requested_amount - @demand.supplied_amount - @demand.promised_amount , min: 0 %>
           </div>
 
           <div class="field input-group">
             <%= form.label :promised_at, '¿Cuándo lo puedes entregar?' %>
-            <%= form.date_field :promised_at, min: Date.today, :value => Date.today, class: "input--style-2" %>
+            <%= form.date_field :promised_at, max: @demand.expiry_at, min: Date.today, :value => Date.today, class: "input--style-2" %>
           </div>
           <%= form.hidden_field :demand_id, :value => @demand_id %>
           <div class="actions">
