@@ -1,0 +1,13 @@
+<% @fabs.each do |fab| %>
+<div>
+  <%sum=0%>
+  <%=fab.email%>
+  <%fab.allocations.each do |all|%>
+  <%if all.status==1%>
+  <%sum += all.amount%>
+  <%end%>
+<% end %>
+<%=sum%>
+<%=button_to('donate', :controller => :donations, :action => :donate, fab_id: fab.id)%>
+<%end%>
+</div>

@@ -1,0 +1,16 @@
+<%comprometidos = 0%>
+<%aportados = 0%>
+<%=@fab.first_name%>
+<%=@fab.last_name%>
+<%=@fab.email%>
+<%@fab.allocations.each do |a|%>
+<%if a.status == 0%>
+<%comprometidos += a.amount%>
+<%end%>
+<%if a.status == 1%>
+<%aportados+= a.amount%>
+<%end%>
+<%end%>
+Comprometidos: <%=comprometidos%>
+Aportados: <%=aportados%>
+Total de aportes: <%=comprometidos+aportados%>
