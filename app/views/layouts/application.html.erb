@@ -23,7 +23,7 @@
     <ul class="MobileNav-nav" data-mobile-nav-list>
       <li class="MobileNav-item" data-mobile-nav-item="1">
         <div class="MobileNav-item-title">
-          <a href="#">Acerca</a>
+          <%= link_to "Acerca", static_pages_about_path%>
         </div>
       </li>
       <li class="MobileNav-item" data-mobile-nav-item="2">
@@ -65,7 +65,7 @@
     </div>
     <nav class="Header-nav" data-nav>
       <div class="Header-nav-item" data-nav-item="1">
-        <a href="#">Acerca</a>
+        <%= link_to "Acerca", static_pages_about_path%>
       </div>
       <%if user_signed_in?%>
         <div class="Header-nav-item" data-nav-item="2">
