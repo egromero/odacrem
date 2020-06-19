@@ -17,7 +17,7 @@
           <% end %>
           <div class="field input-group">
             <%= form.label :amount, "Cantidad a aportar" %>
-            <%= form.number_field :amount, class: "input--style-2", value: 0, max: @demand.requested_amount - @demand.supplied_amount, min: 0 %>
+            <%= form.number_field :amount, class: "input--style-2", value: 0, max: @demand.requested_amount - @demand.supplied_amount - @demand.promised_amount , min: 0 %>
           </div>
 
           <div class="field input-group">
