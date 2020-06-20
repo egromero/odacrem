@@ -5,12 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Allocation.delete_all
 Demand.delete_all
 Product.delete_all
 User.delete_all
 User.create(
   [
-    {email: 'jaferrada@uc.cl', password: 123456, password_confirmation: 123456, type_of_user: 'Fabricante'}, 
+    {email: 'jaferrada@uc.cl', password: 123456, password_confirmation: 123456, type_of_user: 'Fabricante'},
     {email: 'egromero@uc.cl', password: 123456, password_confirmation: 123456, type_of_user: 'Benefactor'},
     {email: 'ifcarrera@uc.cl', first_name: 'Hospital Sotero del Rio', last_name: 'Pediatria', password: 123456, password_confirmation: 123456, type_of_user: 'Hospital'}
   ]
@@ -27,4 +28,3 @@ products = Product.create(
     { name: 'Gorro quirúrjico', image: 'https://carmenlucashn.com/wp-content/uploads/2018/04/83566-2-440x446.png', description: '"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"' }
   ]
 )
-
