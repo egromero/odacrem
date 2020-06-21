@@ -1,12 +1,7 @@
-<p id="notice"><%= notice %></p>
-<h2>Solicitudes de la comunidad</h2>
-  <%if user_signed_in?%>
-    <% if current_user.type_of_user == "Fabricante"%>
-      <%= link_to 'Ir a mis donaciones', my_demands_myhelp_path %>
-    <% end %>
-  <% end %>
+
+<h2>Tus solicitudes</h2>
   <div class="demands-container">
-    <% @demands.each do |demand| %>
+    <% @current_user_demands.each do |demand| %>
       <div class='container-landpage demand-container'>
         <div class="demand-image-container">
           <img class='demand-image' src="<%= url_for(demand.product.image) %>"/>
@@ -21,7 +16,7 @@
               <span class="demand-datum-label">Cantidad:</span><span class="demand-datum-value"><%= demand.requested_amount %></span>
             </div>
             <div class="demand-datum-container">
-              <span class="demand-datum-label"> Fecha límite propuesta:</span><span class="demand-datum-value"><%= demand.expiry_at %></span>
+              <span class="demand-datum-label">Fecha límite propuesta:</span><span class="demand-datum-value"><%= demand.expiry_at %></span>
             </div>
           </div>
           <p class='demand-description'><%= demand.description %></p>
@@ -38,3 +33,4 @@
       </div>
     <%end%>
   </div>
+
