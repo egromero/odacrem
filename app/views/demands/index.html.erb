@@ -4,8 +4,22 @@
 
 <%= link_to 'Ingresar nueva solicitud', new_demand_path %>
 
-
 <h2>Solicitudes de la comunidad</h2>
+  <%if user_signed_in?%>
+    <% if current_user.type_of_user == "Hospital"%>
+      <%= link_to 'Ir a mis solicitudes', my_demands_mydemand_path %>
+    <% end %>
+  <% end %>
+  <div>
+  <div class='container-landpage-search'>
+  
+    <%= form_tag(demands_path, method: :get) do %>
+      <div class="field input-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Escribe algo para comenzar la busqueda", class: 'text-input'%>
+      </div>
+      <%= submit_tag 'Buscar', name: nil ,class: 'btn view-more-demand-btn-search'%>
+    <% end %>
+  </div>
   <div class="demands-container">
     <% @demands.each do |demand| %>
       <div class='container-landpage demand-container'>
