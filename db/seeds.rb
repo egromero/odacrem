@@ -11,8 +11,8 @@ Product.delete_all
 User.delete_all
 User.create(
   [
-    {email: 'jaferrada@uc.cl', password: 123456, password_confirmation: 123456, type_of_user: 'Fabricante'},
-    {email: 'egromero@uc.cl', password: 123456, password_confirmation: 123456, type_of_user: 'Benefactor'},
+    {email: 'jaferrada@uc.cl', first_name: 'Javiera', last_name: 'Ferrada', password: 123456, password_confirmation: 123456, type_of_user: 'Fabricante'},
+    {email: 'egromero@uc.cl', first_name: 'Erick', last_name: 'Romero', password: 123456, password_confirmation: 123456, type_of_user: 'Benefactor'},
     {email: 'ifcarrera@uc.cl', first_name: 'Hospital Sotero del Rio', last_name: 'Pediatria', password: 123456, password_confirmation: 123456, type_of_user: 'Hospital'}
   ]
 )
