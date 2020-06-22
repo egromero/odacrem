@@ -8,6 +8,23 @@
       <div class='demand-text'>
         <div class="demand-data-container">
           <p class='demand-title'><%= demand.demander.last_name%>, <%= demand.demander.first_name %></p>
+          <p class='demand-title'>
+            <%
+            case alloc.status
+            when 0
+               %>Pendiente<%
+               if alloc.expired
+                 %> (Atrasada)<%
+               end
+            when 1
+               %>Entregada<%
+            when 2
+              %>Cancelada<%
+            else
+               %>Estado<%
+            end
+            %>
+          </p>
           <div class="demand-datum-container">
             <span class="demand-datum-label">Tu compromiso:</span><span class="demand-datum-value"><%= alloc.amount %></span>
           </div>
@@ -35,4 +52,3 @@
     </div>
   <%end%>
 </div>
-
