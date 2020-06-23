@@ -1,0 +1,54 @@
+<h2>Tus donaciones</h2>
+<div class="demands-container">
+  <% @allocations_with_demands.each do |alloc, demand| %>
+    <div class='container-landpage demand-container'>
+      <div class="demand-image-container">
+        <img class='demand-image' src="<%= url_for(demand.product.image) %>"/>
+      </div>
+      <div class='demand-text'>
+        <div class="demand-data-container">
+          <p class='demand-title'><%= demand.demander.last_name%>, <%= demand.demander.first_name %></p>
+          <p class='demand-title'>
+            <%
+            case alloc.status
+            when 0
+               %>Pendiente<%
+               if alloc.expired
+                 %> (Atrasada)<%
+               end
+            when 1
+               %>Entregada<%
+            when 2
+              %>Cancelada<%
+            else
+               %>Estado<%
+            end
+            %>
+          </p>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Tu compromiso:</span><span class="demand-datum-value"><%= alloc.amount %></span>
+          </div>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Producto:</span><span class="demand-datum-value"><%= demand.product.name %></span>
+          </div>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Cantidad total:</span><span class="demand-datum-value"><%= demand.requested_amount %></span>
+          </div>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Fecha límite propuesta:</span><span class="demand-datum-value"><%= demand.expiry_at %></span>
+          </div>
+        </div>
+        <p class='demand-description'><%= demand.description %></p>
+        <div class="demand-buttons">
+          <%= link_to "Ver más", demand, class: 'btn view-more-demand-btn'%>
+          <div class="owner-buttons">
+            <% if current_user == demand.demander%>
+              <%= link_to icon('fas', 'edit'), edit_demand_url(demand), class: "owner-button" %>
+              <%= link_to icon('far', 'trash-alt'), demand, method: :delete, data: { confirm: "¿Estás seguro que quieres borrar esta solicitud?" }, class: "owner-button"%>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>

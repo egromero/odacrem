@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'my_demands/mydemand'
+  get 'my_demands/myhelp'
   get 'static_pages/about'
   resources :allocations
   resources :products
