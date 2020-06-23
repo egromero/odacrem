@@ -35,6 +35,7 @@ class AllocationsController < ApplicationController
     respond_to do |format|
       if @allocation.save
         @allocation.status = 0
+        @allocation.save
         @pa.promised_amount += @allocation.amount
         @pa.save
         format.html { redirect_to @pa, notice: 'Allocation was successfully created.' }

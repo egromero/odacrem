@@ -27,12 +27,16 @@
                 <p class="value"><%=aportados%></p>
                 <p class="description">Aportados</p>
             </div>
-            <div class="box-item">
-                <p class="value"> <%=((aportados/(aportados+comprometidos))*100).round(1)%>%</p>
+            <div class="box-item"> 
+                <%if (comprometidos+aportados == 0)%>
+                    <p class="value"> No data</p>
+                <%else%>
+                    <p class="value"><%=((aportados/(aportados+comprometidos))*100).round(1)%>%</p>
+                <%end%>
                 <p class="description">Porcentaje de cumplimiento</p>
             </div>
         </div>
-        <form>
+        <form action="/donations/process_donations" method="post">
             <div class="margin-top-donations">
                 <input class="input-donations" type="radio" value="10000" id="10" name="donation">
                 <label for="10"> $10.000 </label>
@@ -50,10 +54,11 @@
                 <label for="100"> $100.000 </label>
             </div>
             <div>
-                <input class="input-donations" type="radio" value="other" id="other-radio" name="donation">
+                <input class="input-donations" type="radio" value="other"  id="other-radio" name="donation">
                 <label for="other"> Otro Monto: </label>
-                <input class="input-text-donations" type="number" id="other" placeholder="Ej: 150000">   
+                <input class="input-text-donations" type="number" value ="0" name="donationvalue" id="other" placeholder="Ej: 150000" min="0" disabled >   
             </div>
+            <input type="hidden" value ="<%=@fab_id%>" name ="fab_id">
             <div class="margin-top-donations">
             <button type="submit" class="btn btn-primary">Donar</button>
             </div>
@@ -61,3 +66,12 @@
     </div>
 </div>
 
+<script>
+$("#other-radio").click(function () {
+    if ($('#other-radio').is(":checked")) {
+        $('#other').prop('disabled', '');
+    } else {
+        $('#other').prop('disabled', 'disabled');
+    }
+})
+</script>
