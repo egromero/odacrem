@@ -3,7 +3,7 @@ class DemandsController < ApplicationController
 
   def index
     if params[:search]  # esto es cuando se hace la busqueda
-      @demands = Demand.joins(:demander).where("users.last_name LIKE ? or users.first_name LIKE ? or description LIKE ? ", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")    
+      @demands = Demand.joins(:demander).where("users.last_name ILIKE ? or users.first_name ILIKE ? or description ILIKE ? ", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")    
     else # esto es cuando se cargan todos los eventos
       @demands = Demand.all
     end
