@@ -7,20 +7,18 @@
   <% end %>
   <div class="products-container">
     <% @products.each do |product| %>
-      <%= link_to product do %>
         <div class="product-container">
           <div class="product-image-container">
-            <%= image_tag (url_for(product.image))%>
+            <%= image_tag (url_for(product.image)) if product.image.attached?%>
           </div>
           <div class="product-data-container">
             <div class="product-data-name"><%= product.name %></div>
-            <div class="product-data-model"><%= product.model_url ? product.model_url : "Sin modelo registrado" %></div>
-            <div class="product-data-certification"><%= product.certification_url ? product.certification_url : "Sin certificación registrada"%></div>
+            <div class="product-data-model"><%= product.model_url.present? ? product.model_url : "Sin modelo registrado" %></div>
+            <div class="product-data-certification"><%= product.certification_url.present? ? product.certification_url : "Sin certificación registrada"%></div>
           </div>
         </div>
-      <%end%>
     <%end%>
   </div>
 </div>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'Agregar insumo', new_product_path %>
