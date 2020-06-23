@@ -1,0 +1,63 @@
+<div class="row-demands">
+    <div class="column-1">
+        <img class="img-donations" src="https://images.unsplash.com/photo-1588779180563-d7599d127ffe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"/>
+    </div>
+    <%comprometidos = 0%>
+    <%aportados = 0%>
+    <div class="column-2 margin-donations">
+        <div class = "title-donations"><%=@fab.first_name%> <%=@fab.last_name%> </div>
+        <div class="subtitle-donations">
+        <%=@fab.email%>
+        </div>
+        <%@fab.allocations.each do |a|%>
+            <%if a.status == 0%>
+                <%comprometidos += a.amount%>
+            <%end%>
+            <%if a.status == 1%>
+                <%aportados+= a.amount%>
+            <%end%>
+        <%end%>
+
+        <div class="row-demand-info margin-top-donations">
+            <div class="box-item">
+                <p class="value"><%=comprometidos%></p>
+                <p class="description">Comprometidos</p>
+            </div>
+            <div class="box-item">
+                <p class="value"><%=aportados%></p>
+                <p class="description">Aportados</p>
+            </div>
+            <div class="box-item">
+                <p class="value"> <%=((aportados/(aportados+comprometidos))*100).round(1)%>%</p>
+                <p class="description">Porcentaje de cumplimiento</p>
+            </div>
+        </div>
+        <form>
+            <div class="margin-top-donations">
+                <input class="input-donations" type="radio" value="10000" id="10" name="donation">
+                <label for="10"> $10.000 </label>
+            </div>
+            <div>
+                <input class="input-donations" type="radio" value="20000" id="20" name="donation">
+                <label for="20"> $20.000 </label>
+            </div>
+            <div>
+                <input class="input-donations" type="radio" value="50000" id="50" name="donation">
+                <label for="50"> $50.000 </label>
+            </div>
+            <div>
+                <input class="input-donations" type="radio" value="100000" id="100" name="donation">
+                <label for="100"> $100.000 </label>
+            </div>
+            <div>
+                <input class="input-donations" type="radio" value="other" id="other-radio" name="donation">
+                <label for="other"> Otro Monto: </label>
+                <input class="input-text-donations" type="number" id="other" placeholder="Ej: 150000">   
+            </div>
+            <div class="margin-top-donations">
+            <button type="submit" class="btn btn-primary">Donar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

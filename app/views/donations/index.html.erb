@@ -1,0 +1,34 @@
+
+
+<% @fabs.each do |fab| %>
+<div class="container-landpage donations">
+    <%sum=0%>
+    <div>
+    <b><%=fab.first_name%>, <%=fab.last_name%></b><br/>
+    <%=fab.email%>
+    </div>
+    <%fab.allocations.each do |all|%>
+      <%if all.status==1%>
+         <%sum += all.amount%>
+      <%end%>
+    <% end %>
+    <div class = "row row-donations">
+      <div class ="column">
+        Productos donados: 
+        <div class ="margin-left-text">
+        <%=sum%>
+        </div>
+      </div>
+      <div class = "column">
+        Dinero recibido:
+        <div class ="margin-left-text">
+        0
+        </div>
+      </div>
+      <div class ="column">
+       <%=button_to 'Donar', {:controller => :donations, :action => :donate, fab_id: fab.id}, {class: 'btn btn-primary'} %>
+      </div>
+    </div>
+</div>
+<%end%>
+
