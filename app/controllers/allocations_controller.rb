@@ -65,7 +65,7 @@ class AllocationsController < ApplicationController
   def destroy
     @allocation.destroy
     respond_to do |format|
-      format.html { redirect_to allocations_url, notice: 'Allocation was successfully destroyed.' }
+      format.html { redirect_to allocations_url, notice: 'Eliminado correctamente' }
       format.json { head :no_content }
     end
   end
