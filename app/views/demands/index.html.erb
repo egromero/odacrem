@@ -24,7 +24,7 @@
     <% @demands.each do |demand| %>
       <div class='container-landpage demand-container'>
         <div class="demand-image-container">
-          <img class='demand-image' src="<%= url_for(demand.product.image) %>"/>
+          <img class='demand-image' src="<%= url_for(demand.product.image) if demand.product.image.attached? %>"/>
         </div>
         <div class='demand-text'>
           <div class="demand-data-container">
