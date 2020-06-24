@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get 'landing/index'
   get '/users/:id/demands', to: 'users#show_demands'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'landing#index'
+
+  root 'static_pages#about'
 
   get '/new_request', to: 'users#request_hospital'
   post '/create_request', to: 'users#create_request'

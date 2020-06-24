@@ -1,30 +1,33 @@
 <p id="notice"><%= notice %></p>
-<p> Thank you! </p>
+<div class="card card-2 allocation-card">
+  <div class="card-body">
+  <h2 class="title-form">Aporte</h2>
+  <p>
+    <span class="input-group input-allocation"><strong>id:</strong></span>
+    <%= @allocation.demand_id %>
+  </p>
 
-<p>
-  <strong>Demand Id:</strong>
-  <%= @allocation.demand_id %>
-</p>
+  <p>
+    <span class="input-group input-allocation"><strong>Producto:</strong></span>
+    <%= @allocation.demand.product.name %>
+  </p>
 
-<p>
-  <strong>User Id:</strong>
-  <%= @allocation.user_id %>
-</p>
+  <p>
+    <span class="input-group input-allocation"><strong>Cantidad:</strong></span>
+    <%= @allocation.amount %>
+  </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @allocation.amount %>
-</p>
+  <p>
+    <span class="input-group input-allocation"><strong>Fecha comprometida:</strong></span>
+    <%= @allocation.promised_at %>
+  </p>
 
-<p>
-  <strong>Promised at:</strong>
-  <%= @allocation.promised_at %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @allocation.status %>
-</p>
+  <p>
+    <span class="input-group input-allocation"><strong>Estado:</strong></span>
+    <%= @allocation.get_text_from_status %>
+  </p>
+  </div>
+</div>
 
 <%= link_to 'Editar', edit_allocation_path(@allocation) %> |
 <%= link_to 'Volver', allocations_path %>
