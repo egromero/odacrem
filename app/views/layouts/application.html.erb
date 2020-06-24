@@ -71,6 +71,17 @@
             <%= link_to "Registrar", new_user_registration_path%>
           </div>
         </li>
+        <li class="MobileNav-item" data-mobile-nav-item="9">
+        <div class="MobileNav-item-title">
+          <%= link_to "Representar un hospital", new_request_path%>
+        </div>
+        </li>
+        <li class="MobileNav-item" data-mobile-nav-item="10">
+        <div class="MobileNav-item-title">
+          <%= link_to "Solicitudes representantes", requests_path%>
+        </div>
+        </li>
+
     </ul>
   </div>
 </div>
@@ -108,6 +119,16 @@
       <div class="Header-nav-item" data-nav-item="6">
        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
       </div>
+      <%if current_user.type_of_user != "Hospital"%>
+      <div class="Header-nav-item" data-nav-item="9">
+        <%= link_to "Representar Hospital", new_request_path%>
+      </div>
+      <%end%>
+      <% if current_user.type_of_user == "Administrador"%>
+      <div class="Header-nav-item" data-nav-item="10">
+        <%= link_to "Solicitudes representantes", requests_path%>
+      </div>
+      <%end%>
     </nav>
     <%else%>
     <div class="Header-nav-item" data-nav-item="7">
