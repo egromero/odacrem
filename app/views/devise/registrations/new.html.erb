@@ -35,7 +35,7 @@
                             <%= f.label :type_of_user, "Selecciona tipo de usuario*" %>
                             <%= f.select :type_of_user, options_for_select(["Fabricante", "Benefactor"]), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
                         </div>
-                        <p> *Si representas un hospital, debes crear un usuario con el nombre del hospital y con cualquier tipo. Luego de acceder puedes solicitar representar al hospital. </p>
+                        <p> *Si representas un hospital, debes crear un usuario con el nombre del hospital y con cualquier tipo de usuario. Luego de acceder puedes solicitar representar un hospital. </p>
 
                         <div class="actions">
                             <%= f.submit "Registrar", class:'btn btn-lg btn-secondary btn-block' %>
