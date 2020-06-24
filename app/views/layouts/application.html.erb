@@ -41,6 +41,16 @@
           <%= link_to "Insumos", products_path%>
         </div>
       </li>
+      <li class="MobileNav-item" data-mobile-nav-item="6">
+      <div class="MobileNav-item-title">
+        <%= link_to "Representar un hospital", new_request_path%>
+      </div>
+      </li>
+      <li class="MobileNav-item" data-mobile-nav-item="7">
+      <div class="MobileNav-item-title">
+        <%= link_to "Solicitudes representantes", requests_path%>
+      </div>
+      </li>
       <li class="MobileNav-item" data-mobile-nav-item="5">
         <div class="MobileNav-item-title">
         <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
@@ -88,6 +98,16 @@
       <div class="Header-nav-item" data-nav-item="5">
        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
       </div>
+      <%if current_user.type_of_user != "Hospital"%>
+      <div class="Header-nav-item" data-nav-item="6">
+        <%= link_to "Representar Hospital", new_request_path%>
+      </div>
+      <%end%>
+      <%if current_user.type_of_user == "Administrador"%>
+      <div class="Header-nav-item" data-nav-item="7">
+        <%= link_to "Solicitudes representantes", requests_path%>
+      </div>
+      <%end%>
     </nav>
     <%else%>
     <div class="Header-nav-item" data-nav-item="4">
