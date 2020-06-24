@@ -3,14 +3,28 @@ class UsersController < ApplicationController
 
     def show_demands
         @user = User.find(params[:id])
+        if current_user.type_of_user != 'Hospital'
+          @user = current_user
+          redirect_to '/landing/index'
+        end
         @demands = @user.demanded
     end
 
     def request_hospital
-        render 'users/new_request'
+       @user = current_user
+        if current_user.type_of_user == 'Hospital'
+          redirect_to '/landing/index'
+        else
+          render 'users/new_request'
+        end
     end
 
     def create_request
+        if current_user.type_of_user == 'Hospital'
+          @user = current_user
+          redirect_to '/landing/index'
+        else
+        
         @user = current_user
         insert_query = <<-SQL
         INSERT INTO requests (user_id, hospital_name, created_at, updated_at)
@@ -20,19 +34,29 @@ class UsersController < ApplicationController
 
   
       redirect_to '/landing/index'
+       end
     end
 
     def request_list 
+      if current_user.type_of_user != 'Administrador'
+        @user = current_user
+        render '/landing/index'
+      else
       query = <<-SQL 
       SELECT u.id, u.first_name, u.last_name, u.email, r.hospital_name
       FROM users u, requests r
       WHERE u.id = r.user_id
       SQL
       @result = ActiveRecord::Base.connection.execute(query).to_a
+      @user = current_user
       render 'users/hospital_requests'
+      end
     end
 
     def accept_request
+      if current_user.type_of_user != 'Administrador'
+        redirect_to '/landing/index'
+      else
        @user = User.find(params[:id])
        @user.type_of_user = "Hospital"
        @user.save
@@ -42,5 +66,6 @@ class UsersController < ApplicationController
        SQL
        ActiveRecord::Base.connection.execute(query)
        redirect_to '/landing/index'
+      end
     end
 end

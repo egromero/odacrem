@@ -103,7 +103,7 @@
         <%= link_to "Representar Hospital", new_request_path%>
       </div>
       <%end%>
-      <%if current_user.type_of_user == "Administrador"%>
+      <% if current_user.type_of_user == "Administrador"%>
       <div class="Header-nav-item" data-nav-item="7">
         <%= link_to "Solicitudes representantes", requests_path%>
       </div>
