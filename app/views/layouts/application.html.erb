@@ -68,17 +68,23 @@
         <%= link_to "Acerca", static_pages_about_path%>
       </div>
       <%if user_signed_in?%>
-        <div class="Header-nav-item" data-nav-item="2">
-          <%= link_to "Aportar", allocations_path%>
+       <div class="Header-nav-item" data-nav-item="2">
+          <%if current_user.type_of_user == "Benefactor"%>
+            <%= link_to "Aportar a fabricantes", donations_path%>
+          <%else%>
+            <%= link_to "Aportar", allocations_path%>
+          <%end%>
         </div>
       <% if current_user.type_of_user == "Hospital" %>
         <div class="Header-nav-item" data-nav-item="3">
           <%= link_to "Solicitar aporte", demands_path%>
         </div>
       <% end %>
+      <%if current_user.type_of_user != "Benefactor"%>
       <div class="Header-nav-item" data-nav-item="4">
         <%= link_to "Insumos", products_path%>
       </div>
+      <%end%>
       <div class="Header-nav-item" data-nav-item="5">
        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
       </div>

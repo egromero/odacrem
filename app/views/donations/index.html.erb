@@ -22,11 +22,11 @@
       <div class = "column">
         Dinero recibido:
         <div class ="margin-left-text">
-        0
+        $ <%=fab.fab_donations%>
         </div>
       </div>
       <div class ="column">
-       <%=button_to 'Donar', {:controller => :donations, :action => :donate, fab_id: fab.id}, {class: 'btn btn-primary'} %>
+       <%=link_to 'Donar', {:controller => :donations, :action => :donate, fab_id: fab.id}, {class: 'btn btn-primary'} %>
       </div>
     </div>
 </div>
