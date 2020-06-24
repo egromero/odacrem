@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if current_user.type_of_user != 'Hospital'
           @user = current_user
-          redirect_to '/landing/index'
+          redirect_to '/static_pages/about'
         end
         @demands = @user.demanded
     end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     def request_hospital
        @user = current_user
         if current_user.type_of_user == 'Hospital'
-          redirect_to '/landing/index'
+          redirect_to '/static_pages/about'
         else
           render 'users/new_request'
         end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def create_request
         if current_user.type_of_user == 'Hospital'
           @user = current_user
-          redirect_to '/landing/index'
+          redirect_to '/static_pages/about'
         else
         
         @user = current_user
@@ -33,14 +33,14 @@ class UsersController < ApplicationController
       result = ActiveRecord::Base.connection.execute(insert_query)
 
   
-      redirect_to '/landing/index'
+      redirect_to '/static_pages/about'
        end
     end
 
     def request_list 
       if current_user.type_of_user != 'Administrador'
         @user = current_user
-        render '/landing/index'
+        render '/static_pages/about'
       else
       query = <<-SQL 
       SELECT u.id, u.first_name, u.last_name, u.email, r.hospital_name
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     def accept_request
       if current_user.type_of_user != 'Administrador'
-        redirect_to '/landing/index'
+        redirect_to '/static_pages/about'
       else
        @user = User.find(params[:id])
        @user.type_of_user = "Hospital"
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
        WHERE user_id = '#{params[:id]}' 
        SQL
        ActiveRecord::Base.connection.execute(query)
-       redirect_to '/landing/index'
+       redirect_to '/static_pages/about'
       end
     end
 end
