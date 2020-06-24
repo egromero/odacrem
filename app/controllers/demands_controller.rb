@@ -63,7 +63,7 @@ class DemandsController < ApplicationController
   def destroy
     @demand.destroy
     respond_to do |format|
-      format.html { redirect_to demands_url, notice: 'Demand was successfully destroyed.' }
+      format.html { redirect_to demands_url, notice: 'Eliminado correctamente' }
       format.json { head :no_content }
     end
   end

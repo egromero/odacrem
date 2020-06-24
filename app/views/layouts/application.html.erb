@@ -26,34 +26,51 @@
           <%= link_to "Acerca", static_pages_about_path%>
         </div>
       </li>
-      <li class="MobileNav-item" data-mobile-nav-item="2">
-        <div class="MobileNav-item-title">
-          <%= link_to "Aportar", allocations_path%>
-        </div>
-      </li>
-      <li class="MobileNav-item" data-mobile-nav-item="3">
-        <div class="MobileNav-item-title">
-          <%= link_to "Solicitar aporte", demands_path%>
-        </div>
-      </li>
-      <li class="MobileNav-item" data-mobile-nav-item="4">
-        <div class="MobileNav-item-title">
-          <%= link_to "Insumos", products_path%>
-        </div>
-      </li>
-      <li class="MobileNav-item" data-mobile-nav-item="5">
-        <div class="MobileNav-item-title">
-        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
-        </div>
-      <li class="MobileNav-item" data-mobile-nav-item="4">
-        <div class="MobileNav-item-title">
-          <%= link_to "Ingresar", new_user_session_path%>
-        </div>
-        <li class="MobileNav-item" data-mobile-nav-item="4">
-        <div class="MobileNav-item-title">
-          <%= link_to "Registrar", new_user_registration_path%>
-        </div>
-      </li>
+      <%if user_signed_in?%>
+        <li class="MobileNav-item" data-mobile-nav-item="2">
+          <div class="MobileNav-item-title">
+            <%if current_user.type_of_user == "Benefactor"%>
+              <%= link_to "Aportar a fabricantes", donations_path%>
+            <%else%>
+              <%= link_to "Aportar", allocations_path%>
+            <%end%>
+          </div>
+        </li>
+        <% if current_user.type_of_user == "Hospital" %>
+          <li class="MobileNav-item" data-mobile-nav-item="3">
+            <div class="MobileNav-item-title">
+              <%= link_to "Solicitar aporte", demands_path%>
+            </div>
+          </li>
+          <li class="MobileNav-item" data-mobile-nav-item="4">
+            <div class="MobileNav-item-title">
+              <%= link_to 'Mis solicitudes', my_demands_mydemand_path %>
+            </div>
+          </li>
+        <% end %>
+        <%if current_user.type_of_user != "Benefactor"%>
+          <li class="MobileNav-item" data-mobile-nav-item="5">
+            <div class="MobileNav-item-title">
+              <%= link_to "Insumos", products_path%>
+            </div>
+          </li>
+        <%end%>
+        <li class="MobileNav-item" data-mobile-nav-item="6">
+          <div class="MobileNav-item-title">
+          <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
+          </div>
+        </li>
+        <% end %>
+        <li class="MobileNav-item" data-mobile-nav-item="7">
+          <div class="MobileNav-item-title">
+            <%= link_to "Ingresar", new_user_session_path%>
+          </div>
+        </li>
+        <li class="MobileNav-item" data-mobile-nav-item="8">
+          <div class="MobileNav-item-title">
+            <%= link_to "Registrar", new_user_registration_path%>
+          </div>
+        </li>
     </ul>
   </div>
 </div>
@@ -79,21 +96,24 @@
         <div class="Header-nav-item" data-nav-item="3">
           <%= link_to "Solicitar aporte", demands_path%>
         </div>
+        <div class="Header-nav-item" data-nav-item="4">
+          <%= link_to 'Mis solicitudes', my_demands_mydemand_path %>
+        </div>
       <% end %>
       <%if current_user.type_of_user != "Benefactor"%>
-      <div class="Header-nav-item" data-nav-item="4">
-        <%= link_to "Insumos", products_path%>
-      </div>
+        <div class="Header-nav-item" data-nav-item="5">
+          <%= link_to "Insumos", products_path%>
+        </div>
       <%end%>
-      <div class="Header-nav-item" data-nav-item="5">
+      <div class="Header-nav-item" data-nav-item="6">
        <%= link_to "Cerrar sesión", destroy_user_session_path, method: "delete" %>
       </div>
     </nav>
     <%else%>
-    <div class="Header-nav-item" data-nav-item="4">
+    <div class="Header-nav-item" data-nav-item="7">
         <%= link_to "Ingresar", new_user_session_path%>
       </div>
-       <div class="Header-nav-item" data-nav-item="4">
+       <div class="Header-nav-item" data-nav-item="8">
         <%= link_to "Registrar", new_user_registration_path%>
       </div>
     <%end%>
@@ -116,7 +136,7 @@
         <%= yield %>
     </div>
     <footer>
-        <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a>
+        <a href="https://www.freepik.com/free-photos-vectors/design" class="freepik-footer">Design vector created by freepik - www.freepik.com</a>
     </footer>
 </body>
 
