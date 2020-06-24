@@ -32,11 +32,76 @@
   </div>
 </div>
 <div class="date-button">
-  <%= link_to 'Aportar', new_allocation_url(id: @demand.id) , class: "btn btn-primary" %>
+  <% if @demand.expired %>
+    <h3> Esta solicitud ya expiró </h3>
+  <% else %>
+    <%= link_to 'Aportar', new_allocation_url(id: @demand.id) , class: "btn btn-primary" %>
+  <% end %>
   <p class="description"><b>Fecha límite: </b> <%= @demand.expiry_at %> </p>
 </div>
 
- 
+
+<h2>Donaciones</h2>
+<div class="demands-container">
+  <% @demand.allocations.each do |alloc| %>
+    <div class='container-landpage demand-container'>
+      <div class="demand-image-container">
+        <img class='demand-image' src="<%= url_for(@demand.product.image) %>"/>
+      </div>
+      <div class='demand-text'>
+        <div class="demand-data-container">
+          <p class='demand-title'><%= alloc.user.last_name%>, <%= alloc.user.first_name %>, <%= alloc.user.email %></p>
+          <p class='demand-title'>
+            <%
+            case alloc.status
+            when 0
+               %>Pendiente<%
+               if alloc.expired
+                 %> (Atrasada)<%
+               end
+            when 1
+               %>Entregada<%
+            when 2
+              %>Cancelada<%
+            else
+               %>Estado<%
+            end
+            %>
+          </p>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Compromiso:</span><span class="demand-datum-value"><%= alloc.amount %></span>
+          </div>
+          <div class="demand-datum-container">
+            <span class="demand-datum-label">Fecha límite prometida:</span><span class="demand-datum-value"><%= alloc.promised_at %></span>
+          </div>
+        </div>
+        <div class="demand-buttons">
+          <div class="owner-buttons">
+            <% if current_user == @demand.demander%>
+              <% if alloc.status == 0 %>
+                <%= form_with(model: alloc, local: true) do |form| %>
+                <%= form.hidden_field :status, :value => 1 %>
+                <div class="actions">
+                  <%= form.submit "Confirmar entrega", class: "btn btn--radius btn--green" %>
+                </div>
+                <% end %>
+
+                <% if alloc.expired %>
+                  <%= form_with(model: alloc, local: true) do |form| %>
+                    <%= form.hidden_field :status, :value => 2 %>
+                    <div class="actions">
+                      <%= form.submit "Cancelar por demora", class: "btn btn--radius btn--red" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>
 
 
 

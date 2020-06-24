@@ -79,7 +79,7 @@ class AllocationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def allocation_params
-      params.require(:allocation).permit(:amount, :promised_at, :demand_id).merge(
+      params.require(:allocation).permit(:amount, :status, :promised_at, :demand_id).merge(
          user_id: current_user.id)
     end
 end

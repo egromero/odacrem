@@ -1,10 +1,12 @@
 class DemandsController < ApplicationController
   before_action :set_demand, only: [:show, :edit, :update, :destroy]
 
-  # GET /demands
-  # GET /demands.json
   def index
-    @demands = Demand.all
+    if params[:search]  # esto es cuando se hace la busqueda
+      @demands = Demand.joins(:demander).where("users.last_name LIKE ? or users.first_name LIKE ? or description LIKE ? ", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")    
+    else # esto es cuando se cargan todos los eventos
+      @demands = Demand.all
+    end
     @current_user_demands = current_user.demanded
   end
 

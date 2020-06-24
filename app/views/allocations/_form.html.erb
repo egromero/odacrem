@@ -22,9 +22,10 @@
 
           <div class="field input-group">
             <%= form.label :promised_at, '¿Cuándo lo puedes entregar?' %>
-            <%= form.date_field :promised_at, max: @demand.expiry_at, min: Date.today, :value => Date.today, class: "input--style-2" %>
+            <%= form.date_field :promised_at, max: @demand.expiry_at, :value => Date.today, class: "input--style-2" %>
           </div>
           <%= form.hidden_field :demand_id, :value => @demand_id %>
+          <%= form.hidden_field :status, :value => 0 %>
           <div class="actions">
             <%= form.submit "Enviar", class: "btn btn--radius btn--green" %>
           </div>
@@ -32,23 +33,8 @@
           <div class="actions">
             <%= link_to 'Cancelar', demands_path, class: "btn btn--radius btn--red btn--large btn--text-black" %>
           </div>
-        </div>      
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

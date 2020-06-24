@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'my_demands/mydemand'
+  get 'my_demands/myhelp'
   get 'static_pages/about'
   get '/donations/donate', to: 'donations#donate'
   post '/donations/process_donations', to: 'donations#process_donations'
